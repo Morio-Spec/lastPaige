@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>•X• FICHA LAST PAIGE •X•</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+        <div class="edit-controls">
+            <button id="edit-btn" class="edit-btn" onclick="enableEditing()">Editar Ficha</button>
+            <button id="lock-btn" class="edit-btn lock-btn" onclick="disableEditing()">Bloquear Edição</button>
+            <button class="edit-btn" onclick="exportCharacterSheet()">Exportar Ficha</button>
+            <label for="import-file" class="edit-btn" style="cursor: pointer;">
+        Importar Ficha
+        <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importCharacterSheet(event)">
+    </label>
+        </div>
+
+        
+    <div class="container">
+        <header>
+            <h1>•X• <span id="character-name" class="editable" contenteditable="true">FICHA LAST PAIGE</span> •X•</h1>
+        </header>
+        
+        <div class="character-card">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-name">Player</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">Nome do Jogador</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">Nome</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">Nome do Personagem</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">Idade</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">Origem</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">Trilha</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">Nível</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">1</span></div>
+                </div>
+                <div>
+                    <div class="stat-name">XP</div>
+                    <div class="stat-value"><span class="editable" contenteditable="true">0/20</span></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <div class="stat-name">Aparência</div>
+                <p class="editable" contenteditable="true">Descreva a aparência do personagem aqui</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Atributos</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-name">Físico</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Agilidade</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Força</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Carisma</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Inteligência</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Energia Amaldiçoada</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Status</h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-name">HP</div>
+                <div class="stat-value"><span id="current-hp" class="editable" contenteditable="true">20</span>/<span id="max-hp" class="editable" contenteditable="true">20</span></div>
+                <div class="health-bar">
+                    <div id="hp-fill" class="health-fill" style="width: 100%;"></div>
+                </div>
+                <div class="health-controls">
+                    <button class="health-btn" onclick="adjustHP(-5)">-5</button>
+                    <button class="health-btn" onclick="adjustHP(-1)">-1</button>
+                    <button class="health-btn" onclick="adjustHP(1)">+1</button>
+                    <button class="health-btn" onclick="adjustHP(5)">+5</button>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">PA</div>
+                <div class="stat-value"><span id="current-pa" class="editable" contenteditable="true">10</span>/<span id="max-pa" class="editable" contenteditable="true">10</span></div>
+                <div class="health-bar">
+                    <div id="pa-fill" class="health-fill" style="width: 100%;"></div>
+                </div>
+                <div class="health-controls">
+                    <button class="health-btn" onclick="adjustPA(-5)">-5</button>
+                    <button class="health-btn" onclick="adjustPA(-1)">-1</button>
+                    <button class="health-btn" onclick="adjustPA(1)">+1</button>
+                    <button class="health-btn" onclick="adjustPA(5)">+5</button>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Psiquê</div>
+                <div class="stat-value"><span id="current-psy" class="editable" contenteditable="true">40</span>/<span id="max-psy" class="editable" contenteditable="true">40</span></div>
+                <div class="health-bar">
+                    <div id="psy-fill" class="health-fill" style="width: 100%;"></div>
+                </div>
+                <div class="health-controls">
+                    <button class="health-btn" onclick="adjustPsy(-5)">-5</button>
+                    <button class="health-btn" onclick="adjustPsy(-1)">-1</button>
+                    <button class="health-btn" onclick="adjustPsy(1)">+1</button>
+                    <button class="health-btn" onclick="adjustPsy(5)">+5</button>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Insanidade</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">0</span>/<span class="editable" contenteditable="true">????</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-name">Esquiva</div>
+                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Perícias</h2>
+<div class="skills-grid">
+    <div>
+        <div class="skill-item">
+            <span>Pontaria</span>
+            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+        </div>
+        <div class="skill-item">
+            <span>Fortitude</span>
+            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
+        </div>
+        <div class="skill-item">
+            <span>Luta</span>
+            <span><span class="editable" contenteditable="true">0</span> (For)</span>
+        </div>
+        <div class="skill-item">
+            <span>Investigação</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Percepção</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+    </div>
+    <div>
+        <div class="skill-item">
+            <span>Intuição</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Intimidação</span>
+            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+        </div>
+        <div class="skill-item">
+            <span>Enganação</span>
+            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+        </div>
+        <div class="skill-item">
+            <span>Diplomacia</span>
+            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+        </div>
+        <div class="skill-item">
+            <span>Pilotagem</span>
+            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+        </div>
+    </div>
+    <div>
+        <div class="skill-item">
+            <span>Tecnologias</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Instabilidade</span>
+            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
+        </div>
+        <div class="skill-item">
+            <span>Medicina</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Paranormal</span>
+            <span><span class="editable" contenteditable="true">0</span> (EP)</span>
+        </div>
+        <div class="skill-item">
+            <span>Escalar</span>
+            <span><span class="editable" contenteditable="true">0</span> (For)</span>
+        </div>
+    </div>
+    <div>
+        <div class="skill-item">
+            <span>História</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Linguagens</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Vontade</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Furtividade</span>
+            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+        </div>
+        <div class="skill-item">
+            <span>Sobrevivência</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+        <div class="skill-item">
+            <span>Atletismo</span>
+            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+        </div>
+        <div class="skill-item">
+            <span>Ofício</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
+    </div>
+</div>
+        
+        <h2 class="section-title">Inventário <button class="btn" onclick="openEquipmentModal()">+ Equipamento</button></h2>
+        <div class="character-card" id="equipment-list">
+            <!-- Equipamentos serão adicionados aqui dinamicamente -->
+            <p>Nenhum equipamento adicionado ainda.</p>
+        </div>
+        
+        <h2 class="section-title">Maldições <button class="btn" onclick="openCurseModal()">+ Maldição</button></h2>
+        <div id="curses-list">
+            <!-- Lista de maldições vazia por padrão -->
+            <p>Nenhuma maldição adicionada ainda.</p>
+        </div>
+    </div>
+    
+    <!-- Modal para adicionar maldição -->
+    <div id="curse-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('curse-modal')">&times;</span>
+            <h2>Adicionar Nova Maldição</h2>
+            <div class="form-group">
+                <label for="curse-name">Nome da Maldição</label>
+                <input type="text" id="curse-name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="curse-cost">Custo em PA</label>
+                <input type="number" id="curse-cost" class="form-control" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="curse-element">Elemento (opcional)</label>
+                <input type="text" id="curse-element" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="curse-description">Descrição</label>
+                <textarea id="curse-description" class="form-control" rows="5"></textarea>
+            </div>
+            <button class="btn" onclick="addNewCurse()">Adicionar Maldição</button>
+        </div>
+    </div>
+    
+    <!-- Modal para adicionar equipamento -->
+    <div id="equipment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('equipment-modal')">&times;</span>
+            <h2>Adicionar Novo Equipamento</h2>
+            <div class="form-group">
+                <label for="equipment-name">Nome do Equipamento</label>
+                <input type="text" id="equipment-name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="equipment-damage">Dano/Descrição</label>
+                <input type="text" id="equipment-damage" class="form-control">
+            </div>
+            <button class="btn" onclick="addNewEquipment()">Adicionar Equipamento</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
