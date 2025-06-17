@@ -425,3 +425,153 @@ align-items: flex-start; /* Alinha à esquerda */
 .form-group {
     position: relative;
 }
+
+/* Estilo para as runas flutuantes */
+.rune-floating {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-image: url('teste.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+    animation: float 15s infinite ease-in-out, glow 2s infinite alternate;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(10px, 10px) rotate(5deg);
+    }
+    50% {
+        transform: translate(-10px, 5px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(5px, -10px) rotate(3deg);
+    }
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.3;
+        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+    }
+    to {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.9));
+    }
+}
+
+/* Runas "•X•" brilhantes no fundo */
+
+.rune-x-floating {
+    position: fixed;
+    color: var(--highlight-color);
+    font-size: 24px;
+    opacity: 0.1;
+    z-index: -1;
+    animation: float-x 20s infinite linear, glow-x 3s infinite alternate;
+    text-shadow: 0 0 10px var(--highlight-color);
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes float-x {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20vw, 10vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(10vw, 20vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(-10vw, 15vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes glow-x {
+    0% {
+        opacity: 0.05;
+        text-shadow: 0 0 5px var(--highlight-color);
+    }
+    50% {
+        opacity: 0.2;
+        text-shadow: 0 0 20px var(--highlight-color);
+    }
+    100% {
+        opacity: 0.1;
+        text-shadow: 0 0 10px var(--highlight-color);
+    }
+}
+
+/* Adicione no final do arquivo */
+.bloodmoon-btn {
+    background-color: #8B0000 !important; /* Vermelho sangue */
+    color: white !important;
+    margin: 0 10px !important;
+}
+
+.bloodmoon-btn:hover {
+    background-color: #A52A2A !important;
+}
+
+.dip-btn {
+    background-color: #006400 !important; /* Verde escuro */
+    color: white !important;
+    margin: 0 10px !important;
+}
+
+.dip-btn:hover {
+    background-color: #008000 !important;
+}
+
+
+/* Estilos para o tema Blood Moon */
+body.bloodmoon {
+    --primary-color: #8B0000; /* Vermelho sangue */
+    --highlight-color: #FF0000; /* Vermelho brilhante */
+}
+
+body.bloodmoon .rune-floating {
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+}
+
+body.bloodmoon .rune-x-floating {
+    color: #FF0000;
+    text-shadow: 0 0 10px #FF0000;
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.3;
+        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+    }
+    to {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.9));
+    }
+}
+
+@keyframes glow-x {
+    0% {
+        opacity: 0.05;
+        text-shadow: 0 0 5px #FF0000;
+    }
+    50% {
+        opacity: 0.2;
+        text-shadow: 0 0 20px #FF0000;
+    }
+    100% {
+        opacity: 0.1;
+        text-shadow: 0 0 10px #FF0000;
+    }
+}

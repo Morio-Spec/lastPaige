@@ -2,7 +2,7 @@
         let curseCounter = 5;
         let equipmentCounter = 0;
         let currentPath = null;
-
+let isBloodMoonTheme = false;
         
         // Funções para ajustar valores de status
         function adjustHP(value) {
@@ -591,6 +591,12 @@ function calculateDerivedStats() {
             addTrilhaCurse(curse);
         }
     });
+
+}
+
+const dtCircle = document.getElementById('curse-dt-circle');
+if (dtCircle) {
+    dtCircle.textContent = cursedEnergy;
 }
 
 }
@@ -1509,7 +1515,7 @@ const predefinedPaths = [{
             name: "Vigor Inabalável",
             cost: "Passivo",
             element: "N/A",
-            description: "+2 PV por nível."
+            description: "+1 PV por nível."
         },
         {
             level: 10,
@@ -1685,6 +1691,69 @@ const predefinedPaths = [{
             description: "Criatura alcança nível X."
         }
     ]
+    
+},
+{
+    name: "Veloz",
+    summary: "Combate em velocidade sobre-humana, com esquivas impossíveis, múltiplas ações e movimentos que desafiam a percepção inimiga.",
+    curses: [
+        {
+            level: 5,
+            name: "Reflexos Afiados",
+            cost: "Passivo",
+            element: "Agilidade",
+            description: "+5 em Esquiva."
+        },
+        {
+            level: 10,
+            name: "Movimento Acelerado",
+            cost: "Passivo",
+            element: "Mobilidade",
+            description: "Ganha **2 ações de movimento** por turno."
+        },
+        {
+            level: 15,
+            name: "Golpes Velozes",
+            cost: "Passivo",
+            element: "Adaptação",
+            description: "Substitui **Força por Agilidade** em testes de Luta, com **+2 de bônus**."
+        },
+        {
+            level: 20,
+            name: "Esquiva Balística",
+            cost: "Passivo",
+            element: "Precisão",
+            description: "Pode usar **Esquiva contra ataques à distância** (balas, flechas, projéteis)."
+        },
+        {
+            level: 25,
+            name: "Aceleração Instantânea",
+            cost: "20 PA",
+            element: "Tempo",
+            description: "Ganha **2 ações padrão extras** em uma cena."
+        },
+        {
+            level: 30,
+            name: "Fúria Veloz",
+            cost: "Passivo",
+            element: "Evasão",
+            description: "Inimigos sofrem **-2 em ataques contra você** devido à sua velocidade."
+        },
+        {
+            level: 40,
+            name: "Intervenção Relâmpago",
+            cost: "20 PA (Reação)",
+            element: "Proteção",
+            description: "Se um aliado a **curta distância** for atacado, você pode movê-lo instantaneamente, concedendo **+5 em Esquiva** contra o ataque."
+        },
+        {
+            level: 50,
+            name: "Turbilhão de Ações",
+            cost: "Passivo",
+            element: "Velocidade",
+            description: "**Críticos concedem um ataque extra.** Ação 'Empurrar' move você ou outro ser **25m** (livre 1x/turno)."
+        }
+    ]
 }]
 
 function setupPathAutocomplete() {
@@ -1765,4 +1834,23 @@ function addTrilhaCurse(curseData) {
     document.getElementById('curses-list').insertAdjacentHTML('beforeend', newCurseHTML);
 }
 
+function toggleTheme() {
+    const body = document.body;
+    const themeBtn = document.getElementById('theme-btn');
+    const favicon = document.querySelector("link[rel='icon']");
+    
+    isBloodMoonTheme = !isBloodMoonTheme;
+    
+    if (isBloodMoonTheme) {
+        body.classList.add('bloodmoon');
+        themeBtn.textContent = 'D.I.P';
+        themeBtn.className = 'dip-btn';
+        favicon.href = 'bloodmoon.ico'; // Você precisa ter este arquivo
+    } else {
+        body.classList.remove('bloodmoon');
+        themeBtn.textContent = 'Blood Moon';
+        themeBtn.className = 'bloodmoon-btn';
+        favicon.href = 'favicon.ico'; // Volta para o ícone original
+    }
+}
 

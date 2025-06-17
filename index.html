@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>•X• FICHA LAST PAIGE •X•</title>
     <link rel="stylesheet" href="style.css">
+    
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
+    <!-- Runas flutuantes -->
+<div class="rune-floating" style="top: 10%; left: 15%;"></div>
+<div class="rune-floating" style="top: 25%; left: 70%; animation-delay: 1s;"></div>
+<div class="rune-floating" style="top: 50%; left: 40%; animation-delay: 2s;"></div>
+<div class="rune-floating" style="top: 75%; left: 80%; animation-delay: 3s;"></div>
+<div class="rune-floating" style="top: 60%; left: 20%; animation-delay: 4s;"></div>
+
+<!-- Runas "•X•" brilhantes -->
+<div class="rune-x-floating" style="top: 10%; left: 5%; animation-delay: 0s;">•X•</div>
+<div class="rune-x-floating" style="top: 20%; left: 80%; animation-delay: 2s;">•X•</div>
+<div class="rune-x-floating" style="top: 40%; left: 15%; animation-delay: 4s;">•X•</div>
+<div class="rune-x-floating" style="top: 60%; left: 70%; animation-delay: 6s;">•X•</div>
+<div class="rune-x-floating" style="top: 80%; left: 30%; animation-delay: 8s;">•X•</div>
+<div class="rune-x-floating" style="top: 30%; left: 50%; animation-delay: 10s;">•X•</div>
+
 <div class="container">
         <div class="edit-controls">
             <button id="edit-btn" class="edit-btn" onclick="enableEditing()">Editar Ficha</button>
@@ -16,6 +34,7 @@
         Importar Ficha
         <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importCharacterSheet(event)">
     </label>
+    <button id="theme-btn" class="bloodmoon-btn" onclick="toggleTheme()">Blood Moon</button>
         </div>
 
         
@@ -247,6 +266,13 @@
             <p>Nenhum equipamento adicionado ainda.</p>
         </div>
         
+        <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
+  <div id="curse-dt-circle" title="Dificuldade do Teste (DT)"
+       style="width: 50px; height: 50px; border-radius: 50%; background-color: #222; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px;">
+    10
+  </div>
+</div>
+
         <h2 class="section-title">Maldições <button class="btn" onclick="openCurseModal()">+ Maldição</button></h2>
         <div id="curses-list">
             <!-- Lista de maldições vazia por padrão -->
