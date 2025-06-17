@@ -575,3 +575,69 @@ body.bloodmoon .rune-x-floating {
         text-shadow: 0 0 10px #FF0000;
     }
 }
+
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+/* Estilo para a barra de Desespero */
+.desperation-container {
+    margin-top: 20px;
+    background-color: var(--card-color);
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #8B0000;
+}
+
+.desperation-boxes {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.desperation-box {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #8B0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    background-color: #222;
+    color: white;
+    font-weight: bold;
+}
+
+.desperation-box.filled {
+    background-color: #8B0000;
+}
+
+.desperation-box:hover::after {
+    content: attr(data-effect);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #111;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 10;
+    border: 1px solid #8B0000;
+}
+
+.desperation-title {
+    color: #8B0000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Remove o sublinhado apenas do título Desespero */
+.section-title.no-underline {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}

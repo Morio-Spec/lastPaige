@@ -2,6 +2,14 @@
         let curseCounter = 5;
         let equipmentCounter = 0;
         let currentPath = null;
+        const desperationEffects = {
+    6: "Falha na ação e atrapalha aliados",
+    8: "Quebra o item que está sendo segurado",
+    10: "Tremer de desespero (-2 na próxima ação)",
+    12: "Fuga em desespero (+2d6 de dano psiquê)",
+    14: "Condição 'Aterrorizado'",
+    15: "+1 de Insanidade e paralisa em desespero"
+};
 let isBloodMoonTheme = false;
         
         // Funções para ajustar valores de status
@@ -241,6 +249,7 @@ function disableEditing() {
 
 // Iniciar com a ficha não editável (mais seguro)
 document.addEventListener('DOMContentLoaded', function() {
+     initDesperationSystem();
     disableEditing(); // Começa bloqueado
     
     // Configurar eventos dos botões
@@ -1867,5 +1876,77 @@ function toggleTheme() {
         themeBtn.className = 'bloodmoon-btn';
         favicon.href = 'favicon.ico'; // Volta para o ícone original
     }
+}
+
+function initDesperationSystem() {
+    const container = document.querySelector('.desperation-boxes');
+    
+    // Cria 15 caixas (1-15)
+    for (let i = 1; i <= 15; i++) {
+        const box = document.createElement('div');
+        box.className = 'desperation-box';
+        box.textContent = i;
+        box.dataset.level = i;
+        
+        // Adiciona tooltip com efeito se existir
+        if (desperationEffects[i]) {
+            box.dataset.effect = desperationEffects[i];
+        }
+        
+        box.addEventListener('click', function() {
+            toggleDesperation(this);
+        });
+        
+        container.appendChild(box);
+    }
+}
+
+// Alterna o estado da caixa de Desespero
+function toggleDesperation(box) {
+    const level = parseInt(box.dataset.level);
+    const currentLevel = parseInt(document.getElementById('desperation-level').textContent);
+    
+    // Se clicar em uma caixa menor ou igual à atual, define até aquela
+    if (level <= currentLevel) {
+        setDesperation(level);
+    } 
+    // Se clicar em uma caixa maior, define até a nova
+    else {
+        setDesperation(level);
+    }
+}
+
+// Define o nível de Desespero
+function setDesperation(level) {
+    const boxes = document.querySelectorAll('.desperation-box');
+    const levelDisplay = document.getElementById('desperation-level');
+    
+    // Atualiza todas as caixas
+    boxes.forEach(box => {
+        const boxLevel = parseInt(box.dataset.level);
+        
+        if (boxLevel <= level) {
+            box.classList.add('filled');
+        } else {
+            box.classList.remove('filled');
+        }
+    });
+    
+    levelDisplay.textContent = level;
+    
+    // Aplica efeitos automáticos (opcional)
+    applyDesperationEffects(level);
+}
+
+// Aplica efeitos automáticos (opcional)
+function applyDesperationEffects(level) {
+    // Exemplo: Se nível 15, adiciona 1 de Insanidade
+    if (level === 15) {
+        const insanityElement = document.querySelector('.stat-box:nth-child(4) .stat-value span');
+        const currentInsanity = parseInt(insanityElement.textContent) || 0;
+        insanityElement.textContent = currentInsanity + 1;
+        showNotification("+1 de Insanidade (Desespero Nível 15)", "error");
+    }
+    // Adicione outros efeitos automáticos conforme necessário
 }
 
