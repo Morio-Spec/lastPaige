@@ -349,20 +349,35 @@ function exportCharacterSheet() {
         }),
         
         // Maldicoes
-       curses: Array.from(document.querySelectorAll('.curse-card')).map(curse => {
-            const costElement = curse.querySelector('.curse-cost span');
-            const nameElement = curse.querySelector('.curse-name');
-            const descriptionElement = curse.querySelector('p:not(.curse-name)');
-            
-            return {
-                name: nameElement ? nameElement.textContent : 'Nova Maldição',
-                cost: costElement ? costElement.textContent : '1',
-                description: descriptionElement ? descriptionElement.textContent : 'Descrição da maldição.',
-                // Captura elemento se existir
-                element: curse.querySelector('strong') ? 
-                        curse.querySelector('strong').nextSibling.textContent.trim() : ''
-            };
-        }),
+        curses: Array.from(document.querySelectorAll('.curse-card')).map(curse => {
+        const costElement = curse.querySelector('.curse-cost span');
+        const nameElement = curse.querySelector('.curse-name');
+        const descriptionElement = curse.querySelector('p:last-of-type'); // Seleciona o último parágrafo
+        
+        // Extrai o elemento se existir um parágrafo com "Elemento:"
+        let element = '';
+        const elementParagraph = Array.from(curse.querySelectorAll('p')).find(p => 
+            p.textContent.includes('Elemento:')
+        );
+        
+        if (elementParagraph) {
+            element = elementParagraph.textContent.replace('Elemento:', '').trim();
+        }
+        
+        // A descrição é o texto do último parágrafo, removendo o elemento se existir
+        let description = descriptionElement ? descriptionElement.textContent.trim() : '';
+        if (elementParagraph && descriptionElement === elementParagraph) {
+            description = description.replace(`Elemento: ${element}`, '').trim();
+        }
+        
+        return {
+            name: nameElement ? nameElement.textContent : 'Nova Maldição',
+            cost: costElement ? costElement.textContent : '1',
+            element: element,
+            description: description || 'Descrição da maldição.'
+        };
+    }),
+    
     };
     
     // Criar o JSON
