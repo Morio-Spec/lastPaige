@@ -641,3 +641,153 @@ body.bloodmoon .rune-x-floating {
     border-bottom: none !important;
     padding-bottom: 0 !important;
 }
+
+#condition-bar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: var(--card-color);
+    border-right: 2px solid var(--primary-color);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+    z-index: 100;
+}
+
+#toggle-conditions {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#conditions-list {
+    margin-top: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    display: none;
+    font-size: 0.85rem;
+}
+
+#conditions-list ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+#conditions-list h3 {
+    margin-top: 0;
+    color: var(--highlight-color);
+    font-size: 1rem;
+}
+
+#conditions-list.show {
+    display: block;
+}
+
+/* Estilos para as condições */
+#conditions-list li[data-condition="sangrando"] {
+    color: #ff3333;
+    border-left: 3px solid #ff3333;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(255,0,0,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="cansado"] {
+    color: #a0a0a0;
+    border-left: 3px solid #a0a0a0;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(160,160,160,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="atordoado"] {
+    color: #ff9900;
+    border-left: 3px solid #ff9900;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(255,153,0,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="enjoado"] {
+    color: #8a2be2;
+    border-left: 3px solid #8a2be2;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(138,43,226,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="morrendo"] {
+    color: #000;
+    border-left: 3px solid #000;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 100%);
+    text-shadow: 0 0 2px white;
+    font-weight: bold;
+}
+
+#conditions-list li[data-condition="aterrorizado"] {
+    color: #800080;
+    border-left: 3px solid #800080;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(128,0,128,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="perturbado"] {
+    color: #9370db;
+    border-left: 3px solid #9370db;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(147,112,219,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="envenenado"] {
+    color: #32cd32;
+    border-left: 3px solid #32cd32;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(50,205,50,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="em-chamas"] {
+    color: #ff8c00;
+    border-left: 3px solid #ff8c00;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(255,140,0,0.1) 0%, transparent 100%);
+    animation: flicker 2s infinite alternate;
+}
+
+#conditions-list li[data-condition="afogando"] {
+    color: #1e90ff;
+    border-left: 3px solid #1e90ff;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(30,144,255,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="congelado"] {
+    color: #00bfff;
+    border-left: 3px solid #00bfff;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(0,191,255,0.1) 0%, transparent 100%);
+}
+
+#conditions-list li[data-condition="congelado-combate"] {
+    color: #00ffff;
+    border-left: 3px solid #00ffff;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(0,255,255,0.1) 0%, transparent 100%);
+    text-shadow: 0 0 5px rgba(0,255,255,0.3);
+}
+
+#conditions-list li[data-condition="hipotermia"] {
+    color: #add8e6;
+    border-left: 3px solid #add8e6;
+    padding-left: 10px;
+    background: linear-gradient(90deg, rgba(173,216,230,0.1) 0%, transparent 100%);
+}
+
+/* Efeito especial para "Em Chamas" */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}

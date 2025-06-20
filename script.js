@@ -506,29 +506,37 @@ function loadCharacterData(characterData) {
     document.querySelectorAll('.stat-box .stat-value span')[7].textContent = characterData.status.dodge || '-';
     
     // Carregar perícias
-    const skillElements = document.querySelectorAll('.skill-item span:nth-child(2)');
-    skillElements[0].textContent = characterData.skills.marksmanship || '0';
-    skillElements[1].textContent = characterData.skills.fortitude || '0';
-    skillElements[2].textContent = characterData.skills.fight || '0';
-    skillElements[3].textContent = characterData.skills.investigation || '0';
-    skillElements[4].textContent = characterData.skills.perception || '0';
-    skillElements[5].textContent = characterData.skills.intuition || '0';
-    skillElements[6].textContent = characterData.skills.intimidation || '0';
-    skillElements[7].textContent = characterData.skills.deception || '0';
-    skillElements[8].textContent = characterData.skills.diplomacy || '0';
-    skillElements[9].textContent = characterData.skills.piloting || '0';
-    skillElements[10].textContent = characterData.skills.technologies || '0';
-    skillElements[11].textContent = characterData.skills.instability || '0';
-    skillElements[12].textContent = characterData.skills.medicine || '0';
-    skillElements[13].textContent = characterData.skills.paranormal || '0';
-    skillElements[14].textContent = characterData.skills.climbing || '0';
-    skillElements[15].textContent = characterData.skills.history || '0';
-    skillElements[16].textContent = characterData.skills.languages || '0';
-    skillElements[17].textContent = characterData.skills.will || '0';
-    skillElements[18].textContent = characterData.skills.stealth || '0';
-    skillElements[19].textContent = characterData.skills.survival || '0';
-    skillElements[20].textContent = characterData.skills.athletics || '0';
-    skillElements[21].textContent = characterData.skills.smithing || '0';
+    const skillElements = document.querySelectorAll('.skill-item span.editable, .skill-item span[contenteditable="true"]')
+const skillData = [
+    characterData.skills.marksmanship,
+    characterData.skills.fortitude,
+    characterData.skills.fight,
+    characterData.skills.investigation,
+    characterData.skills.perception,
+    characterData.skills.intuition,
+    characterData.skills.intimidation,
+    characterData.skills.deception,
+    characterData.skills.diplomacy,
+    characterData.skills.piloting,
+    characterData.skills.technologies,
+    characterData.skills.instability,
+    characterData.skills.medicine,
+    characterData.skills.paranormal,
+    characterData.skills.climbing,
+    characterData.skills.history,
+    characterData.skills.languages,
+    characterData.skills.will,
+    characterData.skills.stealth,
+    characterData.skills.survival,
+    characterData.skills.athletics,
+    characterData.skills.smithing
+];
+
+skillElements.forEach((element, index) => {
+    if (element && skillData[index] !== undefined) {
+        element.textContent = skillData[index] || '0';
+    }
+});
     
     // Carregar equipamentos
     const equipmentList = document.getElementById('equipment-list');
@@ -1949,4 +1957,14 @@ function applyDesperationEffects(level) {
     }
     // Adicione outros efeitos automáticos conforme necessário
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-conditions');
+    const conditionList = document.getElementById('conditions-list');
+
+    toggleBtn.addEventListener('click', () => {
+        conditionList.classList.toggle('show');
+    });
+});
+
 

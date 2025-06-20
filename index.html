@@ -39,6 +39,7 @@
 
         
     <div class="container">
+        
         <header>
             <h1>•X• <span id="character-name" class="editable" contenteditable="true">FICHA LAST PAIGE</span> •X•</h1>
         </header>
@@ -264,14 +265,14 @@
             <span>Ofício</span>
             <span><span class="editable" contenteditable="true">0</span> (Int)</span>
         </div>
-    <div class="skill-item">
-    <span>Iniciativa</span>
-    <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-</div>
-<div class="skill-item">
-    <span>Reparos</span>
-    <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-</div>
+        <div class="skill-item">
+            <span>Iniciativa</span>
+            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+        </div>
+        <div class="skill-item">
+            <span>Reparos</span>
+            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+        </div>
     </div>
 </div>
         
@@ -318,6 +319,7 @@
             </div>
             <button class="btn" onclick="addNewCurse()">Adicionar Maldição</button>
         </div>
+
     </div>
     
     <!-- Modal para adicionar equipamento -->
@@ -338,5 +340,28 @@
     </div>
     
     <script src="script.js"></script>
+    
+    <div id="condition-bar">
+  <button id="toggle-conditions">⚕</button>
+  <div id="conditions-list" class="hidden">
+    <h3>Condições</h3>
+     <ul id="conditions-itens">
+        <li data-condition="sangrando"><strong>Sangrando:</strong> 1d2 por rodada. Teste Medicina DT 15 para estancar.</li>
+        <li data-condition="cansado"><strong>Cansado:</strong> -2 em testes. Precisa de descanso médio.</li>
+        <li data-condition="atordoado"><strong>Atordoado:</strong> Após 2 críticos, teste Instabilidade DT 15. +1 acerto contra você por 1 rodada.</li>
+        <li data-condition="enjoado"><strong>Enjoado:</strong> Apenas 1 ação (mover ou atacar). Dura 1 cena.</li>
+        <li data-condition="morrendo"><strong>Morrendo:</strong> Teste Físico DT 10 (+2/rodada). Kit médico necessário para salvar.</li>
+        <li data-condition="aterrorizado"><strong>Aterrorizado:</strong> -1 testes. Rola 1d20: até 10 paralisado, senão foge. Diplomacia ou Vontade DT 15 ajuda.</li>
+        <li data-condition="perturbado"><strong>Perturbado:</strong> Teste Vontade DT 15. Ímpar: ilusão. Par: ignora. Ex: atacar ou investigar algo que não existe.</li>
+        <li data-condition="envenenado"><strong>Envenenado:</strong> 1d2 por rodada. Requer antídoto do kit médico DT 15.</li>
+        <li data-condition="em-chamas"><strong>Em Chamas:</strong> 1d6 por rodada. Apaga com água ou Atletismo DT 10.</li>
+        <li data-condition="afogando"><strong>Afogando:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
+        <li data-condition="congelado"><strong>Congelado:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
+        <li data-condition="congelado-combate"><strong>Congelado:</strong> Ao ser atingido por gelo, teste Instabilidade. Falha: congelado (+1 ataque contra você).</li>
+        <li data-condition="hipotermia"><strong>Hipotermia:</strong> Tempo no frio = Físico em turnos. Falha: 8d6/turno. Requer fonte de calor e teste Instabilidade DT 15 para evitar sequelas.</li>
+    </ul>
+  </div>
+</div>
+
 </body>
 </html>
