@@ -690,35 +690,35 @@ body.bloodmoon .rune-x-floating {
 }
 
 /* Estilos para as condições */
-#conditions-list li[data-condition="sangrando"] {
+#conditions-list strong[data-condition="sangrando"] {
     color: #ff3333;
     border-left: 3px solid #ff3333;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(255,0,0,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="cansado"] {
+#conditions-list strong[data-condition="cansado"] {
     color: #a0a0a0;
     border-left: 3px solid #a0a0a0;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(160,160,160,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="atordoado"] {
+#conditions-list strong[data-condition="atordoado"] {
     color: #ff9900;
-    border-left: 3px solid #ff9900;
+    border-left: 3px solid #ffcc00;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(255,153,0,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="enjoado"] {
+#conditions-list strong[data-condition="enjoado"] {
     color: #8a2be2;
     border-left: 3px solid #8a2be2;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(138,43,226,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="morrendo"] {
+#conditions-list strong[data-condition="morrendo"] {
     color: #000;
     border-left: 3px solid #000;
     padding-left: 10px;
@@ -727,28 +727,28 @@ body.bloodmoon .rune-x-floating {
     font-weight: bold;
 }
 
-#conditions-list li[data-condition="aterrorizado"] {
+#conditions-list strong[data-condition="aterrorizado"] {
     color: #800080;
     border-left: 3px solid #800080;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(128,0,128,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="perturbado"] {
+#conditions-list strong[data-condition="perturbado"] {
     color: #9370db;
     border-left: 3px solid #9370db;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(147,112,219,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="envenenado"] {
+#conditions-list strong[data-condition="envenenado"] {
     color: #32cd32;
     border-left: 3px solid #32cd32;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(50,205,50,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="em-chamas"] {
+#conditions-list strong[data-condition="em-chamas"] {
     color: #ff8c00;
     border-left: 3px solid #ff8c00;
     padding-left: 10px;
@@ -756,21 +756,21 @@ body.bloodmoon .rune-x-floating {
     animation: flicker 2s infinite alternate;
 }
 
-#conditions-list li[data-condition="afogando"] {
+#conditions-list strong[data-condition="afogando"] {
     color: #1e90ff;
     border-left: 3px solid #1e90ff;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(30,144,255,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="congelado"] {
+#conditions-list strong[data-condition="congelado"] {
     color: #00bfff;
     border-left: 3px solid #00bfff;
     padding-left: 10px;
     background: linear-gradient(90deg, rgba(0,191,255,0.1) 0%, transparent 100%);
 }
 
-#conditions-list li[data-condition="congelado-combate"] {
+#conditions-list strong[data-condition="congelado-combate"] {
     color: #00ffff;
     border-left: 3px solid #00ffff;
     padding-left: 10px;
@@ -778,7 +778,7 @@ body.bloodmoon .rune-x-floating {
     text-shadow: 0 0 5px rgba(0,255,255,0.3);
 }
 
-#conditions-list li[data-condition="hipotermia"] {
+#conditions-list strong[data-condition="hipotermia"] {
     color: #add8e6;
     border-left: 3px solid #add8e6;
     padding-left: 10px;
@@ -790,4 +790,11 @@ body.bloodmoon .rune-x-floating {
     0% { opacity: 1; }
     50% { opacity: 0.8; }
     100% { opacity: 1; }
+}
+
+#conditions-items li {
+    color: var(--primary-color); 
+    border-left: none; 
+    padding-left: 0;
+    background: none; 
 }
