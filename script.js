@@ -322,31 +322,22 @@ function exportCharacterSheet() {
             dodge: document.querySelectorAll('.stat-box .stat-value span')[7].textContent
         },
         
+       
         // Perícias
-        skills: {
-            marksmanship: document.querySelectorAll('.skill-item span:nth-child(2)')[0].textContent,
-            fortitude: document.querySelectorAll('.skill-item span:nth-child(2)')[1].textContent,
-            fight: document.querySelectorAll('.skill-item span:nth-child(2)')[2].textContent,
-            investigation: document.querySelectorAll('.skill-item span:nth-child(2)')[3].textContent,
-            perception: document.querySelectorAll('.skill-item span:nth-child(2)')[4].textContent,
-            intuition: document.querySelectorAll('.skill-item span:nth-child(2)')[5].textContent,
-            intimidation: document.querySelectorAll('.skill-item span:nth-child(2)')[6].textContent,
-            deception: document.querySelectorAll('.skill-item span:nth-child(2)')[7].textContent,
-            diplomacy: document.querySelectorAll('.skill-item span:nth-child(2)')[8].textContent,
-            piloting: document.querySelectorAll('.skill-item span:nth-child(2)')[9].textContent,
-            technologies: document.querySelectorAll('.skill-item span:nth-child(2)')[10].textContent,
-            instability: document.querySelectorAll('.skill-item span:nth-child(2)')[11].textContent,
-            medicine: document.querySelectorAll('.skill-item span:nth-child(2)')[12].textContent,
-            paranormal: document.querySelectorAll('.skill-item span:nth-child(2)')[13].textContent,
-            climbing: document.querySelectorAll('.skill-item span:nth-child(2)')[14].textContent,
-            history: document.querySelectorAll('.skill-item span:nth-child(2)')[15].textContent,
-            languages: document.querySelectorAll('.skill-item span:nth-child(2)')[16].textContent,
-            will: document.querySelectorAll('.skill-item span:nth-child(2)')[17].textContent,
-            stealth: document.querySelectorAll('.skill-item span:nth-child(2)')[18].textContent,
-            survival: document.querySelectorAll('.skill-item span:nth-child(2)')[19].textContent,
-            athletics: document.querySelectorAll('.skill-item span:nth-child(2)')[20].textContent,
-            smithing: document.querySelectorAll('.skill-item span:nth-child(2)')[21].textContent
-        },
+        skills: Array.from(document.querySelectorAll('.skill-item')).map(item => {
+            const spans = item.querySelectorAll('span');
+            const name = spans[0].textContent.trim();
+            const valueElement = spans[1].querySelector('.editable') || spans[1];
+            const value = valueElement.textContent.trim();
+            const attributeMatch = spans[1].textContent.match(/\(([^)]+)\)/);
+            const attribute = attributeMatch ? attributeMatch[1] : '';
+            
+            return {
+                name: name,
+                value: value,
+                attribute: attribute
+            };
+        }),
         
         // Equipamentos
         equipment: Array.from(document.querySelectorAll('.inventory-item')).map(item => {
@@ -505,39 +496,44 @@ function loadCharacterData(characterData) {
     document.querySelectorAll('.stat-box .stat-value span')[6].textContent = characterData.status.insanity || 'X';
     document.querySelectorAll('.stat-box .stat-value span')[7].textContent = characterData.status.dodge || '-';
     
-    // Carregar perícias
-    const skillElements = document.querySelectorAll('.skill-item span.editable, .skill-item span[contenteditable="true"]')
-const skillData = [
-    characterData.skills.marksmanship,
-    characterData.skills.fortitude,
-    characterData.skills.fight,
-    characterData.skills.investigation,
-    characterData.skills.perception,
-    characterData.skills.intuition,
-    characterData.skills.intimidation,
-    characterData.skills.deception,
-    characterData.skills.diplomacy,
-    characterData.skills.piloting,
-    characterData.skills.technologies,
-    characterData.skills.instability,
-    characterData.skills.medicine,
-    characterData.skills.paranormal,
-    characterData.skills.climbing,
-    characterData.skills.history,
-    characterData.skills.languages,
-    characterData.skills.will,
-    characterData.skills.stealth,
-    characterData.skills.survival,
-    characterData.skills.athletics,
-    characterData.skills.smithing
-];
-
-skillElements.forEach((element, index) => {
-    if (element && skillData[index] !== undefined) {
-        element.textContent = skillData[index] || '0';
-    }
-});
     
+    
+    // Carregar perícias
+    const skillItems = document.querySelectorAll('.skill-item');
+    if (characterData.skills && characterData.skills.length > 0) {
+        skillItems.forEach((item, index) => {
+            if (index < characterData.skills.length) {
+                const skillData = characterData.skills[index];
+                const spans = item.querySelectorAll('span');
+                
+                
+                if (spans.length >= 2) {
+                    
+                    const attributeMatch = spans[1].textContent.match(/\(([^)]+)\)/);
+                    const attribute = attributeMatch ? attributeMatch[1] : '';
+                    
+                    
+                    const valueSpan = document.createElement('span');
+                    valueSpan.className = 'editable';
+                    valueSpan.contentEditable = 'true';
+                    valueSpan.textContent = skillData.value || '0';
+                    
+                   
+                    spans[1].innerHTML = '';
+                    spans[1].appendChild(valueSpan);
+                    
+                   
+                    if (attribute) {
+                        const attributeSpan = document.createElement('span');
+                        attributeSpan.textContent = ` (${attribute})`;
+                        attributeSpan.className = 'non-editable';
+                        spans[1].appendChild(attributeSpan);
+                    }
+                }
+            }
+        });
+    }
+
     // Carregar equipamentos
     const equipmentList = document.getElementById('equipment-list');
     equipmentList.innerHTML = '';
