@@ -1963,4 +1963,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Configuração da música de fundo
+document.addEventListener('DOMContentLoaded', function() {
+    const bgMusic = document.getElementById('bgMusic');
+    
+    // Tentar reproduzir automaticamente
+    const playAudio = () => {
+        bgMusic.play()
+            .then(() => {
+                console.log("Música de fundo iniciada");
+                bgMusic.volume = 0.3; // Ajuste o volume (0.0 a 1.0)
+            })
+            .catch(e => {
+                console.log("Reprodução automática bloqueada:", e);
+                // Requer interação do usuário para iniciar
+                document.addEventListener('click', function startAudio() {
+                    bgMusic.play();
+                    document.removeEventListener('click', startAudio);
+                }, { once: true });
+            });
+    };
+
+    playAudio();
+    
+    // Impedir que o usuário pause via JavaScript
+    Object.defineProperty(HTMLMediaElement.prototype, 'paused', {
+        get: function() {
+            return false;
+        }
+    });
+});
+
 
