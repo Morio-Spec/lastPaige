@@ -4,369 +4,636 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>•X• FICHA LAST PAIGE •X•</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
     <link rel="stylesheet" href="style.css">
-    
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="bg-dark text-light">
     <!-- Runas flutuantes -->
-<div class="rune-floating" style="top: 10%; left: 15%;"></div>
-<div class="rune-floating" style="top: 25%; left: 70%; animation-delay: 1s;"></div>
-<div class="rune-floating" style="top: 50%; left: 40%; animation-delay: 2s;"></div>
-<div class="rune-floating" style="top: 75%; left: 80%; animation-delay: 3s;"></div>
-<div class="rune-floating" style="top: 60%; left: 20%; animation-delay: 4s;"></div>
+    <div class="rune-floating" style="top: 10%; left: 15%;"></div>
+    <div class="rune-floating" style="top: 25%; left: 70%; animation-delay: 1s;"></div>
+    <div class="rune-floating" style="top: 50%; left: 40%; animation-delay: 2s;"></div>
+    <div class="rune-floating" style="top: 75%; left: 80%; animation-delay: 3s;"></div>
+    <div class="rune-floating" style="top: 60%; left: 20%; animation-delay: 4s;"></div>
 
-<!-- Runas "•X•" brilhantes -->
-<div class="rune-x-floating" style="top: 10%; left: 5%; animation-delay: 0s;">•X•</div>
-<div class="rune-x-floating" style="top: 20%; left: 80%; animation-delay: 2s;">•X•</div>
-<div class="rune-x-floating" style="top: 40%; left: 15%; animation-delay: 4s;">•X•</div>
-<div class="rune-x-floating" style="top: 60%; left: 70%; animation-delay: 6s;">•X•</div>
-<div class="rune-x-floating" style="top: 80%; left: 30%; animation-delay: 8s;">•X•</div>
-<div class="rune-x-floating" style="top: 30%; left: 50%; animation-delay: 10s;">•X•</div>
+    <!-- Runas "•X•" brilhantes -->
+    <div class="rune-x-floating" style="top: 10%; left: 5%; animation-delay: 0s;">•X•</div>
+    <div class="rune-x-floating" style="top: 20%; left: 80%; animation-delay: 2s;">•X•</div>
+    <div class="rune-x-floating" style="top: 40%; left: 15%; animation-delay: 4s;">•X•</div>
+    <div class="rune-x-floating" style="top: 60%; left: 70%; animation-delay: 6s;">•X•</div>
+    <div class="rune-x-floating" style="top: 80%; left: 30%; animation-delay: 8s;">•X•</div>
+    <div class="rune-x-floating" style="top: 30%; left: 50%; animation-delay: 10s;">•X•</div>
 
-<div class="container">
-        <div class="edit-controls">
-            <button id="edit-btn" class="edit-btn" onclick="enableEditing()">Editar Ficha</button>
-            <button id="lock-btn" class="edit-btn lock-btn" onclick="disableEditing()">Bloquear Edição</button>
-            <button class="edit-btn" onclick="exportCharacterSheet()">Exportar Ficha</button>
-            <label for="import-file" class="edit-btn" style="cursor: pointer;">
-        Importar Ficha
-        <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importCharacterSheet(event)">
-    </label>
-    <button id="theme-btn" class="bloodmoon-btn" onclick="toggleTheme()">Blood Moon</button>
+    <div class="container-fluid py-3">
+        <!-- Header com botões de controle -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                    <h1 class="h2 mb-0">•X• <span id="character-name" class="editable border-bottom border-primary" contenteditable="true">FICHA LAST PAIGE</span> •X•</h1>
+                    
+                    <div class="btn-group" role="group">
+                        <button id="edit-btn" class="btn btn-outline-success" onclick="enableEditing()">
+                            <i class="bi bi-pencil"></i> Editar
+                        </button>
+                        <button id="lock-btn" class="btn btn-outline-danger d-none" onclick="disableEditing()">
+                            <i class="bi bi-lock"></i> Bloquear
+                        </button>
+                        <button class="btn btn-outline-info" onclick="exportCharacterSheet()">
+                            <i class="bi bi-download"></i> Exportar
+                        </button>
+                        <label for="import-file" class="btn btn-outline-warning" style="cursor: pointer;">
+                            <i class="bi bi-upload"></i> Importar
+                            <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importCharacterSheet(event)">
+                        </label>
+                        <button id="theme-btn" class="btn btn-outline-danger bloodmoon-btn" onclick="toggleTheme()">
+                            <i class="bi bi-moon"></i> Blood Moon
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        
-    <div class="container">
-        
-        <header>
-            <h1>•X• <span id="character-name" class="editable" contenteditable="true">FICHA LAST PAIGE</span> •X•</h1>
-        </header>
-        
-        <div class="character-card">
-            <div class="stats-grid">
-                <div>
-                    <div class="stat-name">Player</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">Nome do Jogador</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">Nome</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">Nome do Personagem</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">Idade</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">Origem</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">Trilha</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">-</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">Nível</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">1</span></div>
-                </div>
-                <div>
-                    <div class="stat-name">XP</div>
-                    <div class="stat-value"><span class="editable" contenteditable="true">0/20</span></div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 30px;">
-                <div class="stat-name">Aparência</div>
-                <p class="editable" contenteditable="true">Descreva a aparência do personagem aqui</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title">Atributos</h2>
-        <div class="stats-grid">
-            <div class="stat-box">
-                <div class="stat-name">Físico</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Agilidade</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Força</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Carisma</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Inteligência</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Energia Amaldiçoada</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-        </div>
-        
-        <h2 class="section-title">Status</h2>
-        <div class="stats-grid">
-            <div class="stat-box">
-                <div class="stat-name">HP</div>
-                <div class="stat-value"><span id="current-hp" class="editable" contenteditable="true">20</span>/<span id="max-hp" class="editable" contenteditable="true">20</span></div>
-                <div class="health-bar">
-                    <div id="hp-fill" class="health-fill" style="width: 100%;"></div>
-                </div>
-                <div class="health-controls">
-                    <button class="health-btn" onclick="adjustHP(-5)">-5</button>
-                    <button class="health-btn" onclick="adjustHP(-1)">-1</button>
-                    <button class="health-btn" onclick="adjustHP(1)">+1</button>
-                    <button class="health-btn" onclick="adjustHP(5)">+5</button>
+        <!-- Informações Básicas -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <div class="stats-grid row g-3">
+                            <div class="col-md-6 col-lg-3">
+                                <label class="form-label text-success fw-bold">Player</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">Nome do Jogador</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <label class="form-label text-success fw-bold">Nome</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">Nome do Personagem</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-2">
+                                <label class="form-label text-success fw-bold">Idade</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">-</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-2">
+                                <label class="form-label text-success fw-bold">Origem</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">-</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <label class="form-label text-success fw-bold">Trilha</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">-</span>
+                                </div>
+                                <div id="path-suggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div class="col-md-6 col-lg-2">
+                                <label class="form-label text-success fw-bold">Nível</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">1</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-2">
+                                <label class="form-label text-success fw-bold">XP</label>
+                                <div class="stat-value">
+                                    <span class="editable" contenteditable="true">0/20</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-success fw-bold">Aparência</label>
+                                <div class="character-card">
+                                    <p class="editable" contenteditable="true">Descreva a aparência do personagem aqui</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="stat-box">
-                <div class="stat-name">PA</div>
-                <div class="stat-value"><span id="current-pa" class="editable" contenteditable="true">10</span>/<span id="max-pa" class="editable" contenteditable="true">10</span></div>
-                <div class="health-bar">
-                    <div id="pa-fill" class="health-fill" style="width: 100%;"></div>
-                </div>
-                <div class="health-controls">
-                    <button class="health-btn" onclick="adjustPA(-5)">-5</button>
-                    <button class="health-btn" onclick="adjustPA(-1)">-1</button>
-                    <button class="health-btn" onclick="adjustPA(1)">+1</button>
-                    <button class="health-btn" onclick="adjustPA(5)">+5</button>
-                </div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Psiquê</div>
-                <div class="stat-value"><span id="current-psy" class="editable" contenteditable="true">40</span>/<span id="max-psy" class="editable" contenteditable="true">40</span></div>
-                <div class="health-bar">
-                    <div id="psy-fill" class="health-fill" style="width: 100%;"></div>
-                </div>
-                <div class="health-controls">
-                    <button class="health-btn" onclick="adjustPsy(-5)">-5</button>
-                    <button class="health-btn" onclick="adjustPsy(-1)">-1</button>
-                    <button class="health-btn" onclick="adjustPsy(1)">+1</button>
-                    <button class="health-btn" onclick="adjustPsy(5)">+5</button>
-                </div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Insanidade</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">0</span>/<span class="editable" contenteditable="true">????</span></div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-name">Esquiva</div>
-                <div class="stat-value"><span class="editable" contenteditable="true">10</span></div>
-            </div>
-            <h2 class="section-title no-underline">Desespero</h2>
-<div class="desperation-container">
-    <div class="desperation-title">Nível de Desespero: <span id="desperation-level">0</span></div>
-    <div class="desperation-boxes">
-        <!-- Caixas de 1 a 15 serão geradas pelo JavaScript -->
-    </div>
-</div>
         </div>
-        
-        <h2 class="section-title">Perícias</h2>
-<div class="skills-grid">
-    <div>
-        <div class="skill-item">
-            <span>Pontaria</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-        <div class="skill-item">
-            <span>Fortitude</span>
-            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
-        </div>
-        <div class="skill-item">
-            <span>Luta</span>
-            <span><span class="editable" contenteditable="true">0</span> (For)</span>
-        </div>
-        <div class="skill-item">
-            <span>Investigação</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Percepção</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-    </div>
-    <div>
-        <div class="skill-item">
-            <span>Intuição</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Intimidação</span>
-            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
-        </div>
-        <div class="skill-item">
-            <span>Enganação</span>
-            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
-        </div>
-        <div class="skill-item">
-            <span>Diplomacia</span>
-            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
-        </div>
-        <div class="skill-item">
-            <span>Pilotagem</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-    </div>
-    <div>
-        <div class="skill-item">
-            <span>Tecnologias</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Instabilidade</span>
-            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
-        </div>
-        <div class="skill-item">
-            <span>Medicina</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Paranormal</span>
-            <span><span class="editable" contenteditable="true">0</span> (EP)</span>
-        </div>
-        <div class="skill-item">
-            <span>Acrobacia</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-    </div>
-    <div>
-        <div class="skill-item">
-            <span>História</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Linguagens</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Vontade</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Furtividade</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-        <div class="skill-item">
-            <span>Sobrevivência</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Atletismo</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-        <div class="skill-item">
-            <span>Ofício</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-        <div class="skill-item">
-            <span>Iniciativa</span>
-            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
-        </div>
-        <div class="skill-item">
-            <span>Reparos</span>
-            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
-        </div>
-    </div>
-</div>
-        
-        <h2 class="section-title">Inventário <button class="btn" onclick="openEquipmentModal()">+ Equipamento</button></h2>
-        <div class="character-card" id="equipment-list">
-            <!-- Equipamentos serão adicionados aqui dinamicamente -->
-            <p>Nenhum equipamento adicionado ainda.</p>
-        </div>
-        
-        <div style="display: flex; justify-content: flex-end; margin: 10px 0;">
-  <div id="curse-dt-circle" title="Dificuldade do Teste (DT)"
-       style="width: 50px; height: 50px; border-radius: 50%; background-color: #222; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px;">
-    10
-  </div>
-</div>
 
-        <h2 class="section-title">Maldições <button class="btn" onclick="openCurseModal()">+ Maldição</button></h2>
-        <div id="curses-list">
-            <!-- Lista de maldições vazia por padrão -->
-            <p>Nenhuma maldição adicionada ainda.</p>
+        <!-- Atributos e Status -->
+        <div class="row mb-4">
+            <!-- Atributos -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-header bg-secondary bg-opacity-25">
+                        <h3 class="h5 mb-0 text-success"><i class="bi bi-bar-chart"></i> Atributos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Físico</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Agilidade</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Força</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Carisma</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Inteligência</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="stat-box text-center p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="stat-name text-success fw-bold mb-1">Energia Amaldiçoada</div>
+                                    <div class="stat-value h4 text-light">
+                                        <span class="editable" contenteditable="true">10</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-header bg-secondary bg-opacity-25">
+                        <h3 class="h5 mb-0 text-success"><i class="bi bi-heart-pulse"></i> Status</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <!-- HP -->
+                            <div class="col-md-6">
+                                <div class="p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="text-success fw-bold">HP</div>
+                                        <div class="h5 mb-0">
+                                            <span id="current-hp" class="editable" contenteditable="true">20</span>/
+                                            <span id="max-hp" class="editable" contenteditable="true">20</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress mb-2" style="height: 20px;">
+                                        <div id="hp-fill" class="progress-bar bg-success" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="btn-group btn-group-sm w-100" role="group">
+                                        <button class="btn btn-outline-danger" onclick="adjustHP(-5)">-5</button>
+                                        <button class="btn btn-outline-warning" onclick="adjustHP(-1)">-1</button>
+                                        <button class="btn btn-outline-info" onclick="adjustHP(1)">+1</button>
+                                        <button class="btn btn-outline-success" onclick="adjustHP(5)">+5</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PA -->
+                            <div class="col-md-6">
+                                <div class="p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="text-success fw-bold">PA</div>
+                                        <div class="h5 mb-0">
+                                            <span id="current-pa" class="editable" contenteditable="true">10</span>/
+                                            <span id="max-pa" class="editable" contenteditable="true">10</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress mb-2" style="height: 20px;">
+                                        <div id="pa-fill" class="progress-bar bg-info" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="btn-group btn-group-sm w-100" role="group">
+                                        <button class="btn btn-outline-danger" onclick="adjustPA(-5)">-5</button>
+                                        <button class="btn btn-outline-warning" onclick="adjustPA(-1)">-1</button>
+                                        <button class="btn btn-outline-info" onclick="adjustPA(1)">+1</button>
+                                        <button class="btn btn-outline-success" onclick="adjustPA(5)">+5</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Psiquê -->
+                            <div class="col-md-6">
+                                <div class="p-3 bg-black bg-opacity-50 rounded border border-secondary">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="text-success fw-bold">Psiquê</div>
+                                        <div class="h5 mb-0">
+                                            <span id="current-psy" class="editable" contenteditable="true">40</span>/
+                                            <span id="max-psy" class="editable" contenteditable="true">40</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress mb-2" style="height: 20px;">
+                                        <div id="psy-fill" class="progress-bar bg-warning" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="btn-group btn-group-sm w-100" role="group">
+                                        <button class="btn btn-outline-danger" onclick="adjustPsy(-5)">-5</button>
+                                        <button class="btn btn-outline-warning" onclick="adjustPsy(-1)">-1</button>
+                                        <button class="btn btn-outline-info" onclick="adjustPsy(1)">+1</button>
+                                        <button class="btn btn-outline-success" onclick="adjustPsy(5)">+5</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Outros Status -->
+                            <div class="col-md-6">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="stat-box text-center p-2 bg-black bg-opacity-50 rounded border border-secondary">
+                                            <div class="stat-name text-success fw-bold small">Insanidade</div>
+                                            <div class="stat-value h6 mb-0">
+                                                <span class="editable" contenteditable="true">0</span>/
+                                                <span class="editable" contenteditable="true">????</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="stat-box text-center p-2 bg-black bg-opacity-50 rounded border border-secondary">
+                                            <div class="stat-name text-success fw-bold small">Esquiva</div>
+                                            <div class="stat-value h6 mb-0">
+                                                <span class="editable" contenteditable="true">10</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="text-center p-2 bg-black bg-opacity-50 rounded border border-secondary">
+                                            <div class="text-success fw-bold small">DT Amaldiçoado</div>
+                                            <div id="curse-dt-circle" class="h4 mb-0">10</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desespero -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-header bg-secondary bg-opacity-25">
+                        <h3 class="h5 mb-0 text-danger"><i class="bi bi-exclamation-triangle"></i> Desespero</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="desperation-container">
+                            <div class="desperation-title">Nível de Desespero: <span id="desperation-level">0</span></div>
+                            <div class="desperation-boxes mt-3">
+                                <!-- Caixas de 1 a 15 serão geradas pelo JavaScript -->
+                            </div>
+                            <div class="mt-3 text-muted small">
+                                <i class="bi bi-info-circle"></i> Clique nas caixas para definir o nível de desespero
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perícias -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-header bg-secondary bg-opacity-25">
+                        <h3 class="h5 mb-0 text-success"><i class="bi bi-tools"></i> Perícias</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 mb-3">
+                                <div class="skill-category">
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Pontaria</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Fortitude</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Luta</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (For)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Investigação</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Percepção</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3 mb-3">
+                                <div class="skill-category">
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Intuição</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Intimidação</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Enganação</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Diplomacia</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Car)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Pilotagem</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3 mb-3">
+                                <div class="skill-category">
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Tecnologias</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Instabilidade</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Fis)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Medicina</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Paranormal</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (EP)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Acrobacia</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3 mb-3">
+                                <div class="skill-category">
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>História</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Linguagens</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Vontade</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Furtividade</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Sobrevivência</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Atletismo</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Ofício</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item border-bottom border-secondary pb-2 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Iniciativa</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Agi)</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Reparos</span>
+                                            <span><span class="editable" contenteditable="true">0</span> (Int)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventário e Maldições -->
+        <div class="row mb-4">
+            <!-- Inventário -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-header bg-secondary bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h3 class="h5 mb-0 text-success"><i class="bi bi-backpack"></i> Inventário</h3>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#equipmentModal">
+                            <i class="bi bi-plus"></i> Equipamento
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="equipment-list">
+                            <div class="text-center text-muted py-4">
+                                <i class="bi bi-inbox display-6"></i>
+                                <p class="mt-2">Nenhum equipamento adicionado ainda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maldições -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-header bg-secondary bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h3 class="h5 mb-0 text-danger"><i class="bi bi-flower1"></i> Maldições</h3>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#curseModal">
+                            <i class="bi bi-plus"></i> Maldição
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="curses-list">
+                            <div class="text-center text-muted py-4">
+                                <i class="bi bi-magic display-6"></i>
+                                <p class="mt-2">Nenhuma maldição adicionada ainda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <!-- Modal para adicionar maldição -->
-    <div id="curse-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('curse-modal')">&times;</span>
-            <h2>Adicionar Nova Maldição</h2>
-            <div class="form-group">
-                <label for="curse-name">Nome da Maldição</label>
-                <input type="text" id="curse-name" class="form-control">
+    <div class="modal fade" id="curseModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-danger"><i class="bi bi-flower1"></i> Adicionar Nova Maldição</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nome da Maldição</label>
+                        <input type="text" id="curse-name" class="form-control bg-dark text-light border-secondary">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Custo em PA</label>
+                        <input type="number" id="curse-cost" class="form-control bg-dark text-light border-secondary" min="1" value="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Elemento (opcional)</label>
+                        <input type="text" id="curse-element" class="form-control bg-dark text-light border-secondary">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea id="curse-description" class="form-control bg-dark text-light border-secondary" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="addNewCurse()">Adicionar Maldição</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="curse-cost">Custo em PA</label>
-                <input type="number" id="curse-cost" class="form-control" min="1" value="1">
-            </div>
-            <div class="form-group">
-                <label for="curse-element">Elemento (opcional)</label>
-                <input type="text" id="curse-element" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="curse-description">Descrição</label>
-                <textarea id="curse-description" class="form-control" rows="5"></textarea>
-            </div>
-            <button class="btn" onclick="addNewCurse()">Adicionar Maldição</button>
         </div>
-
     </div>
-    
+
     <!-- Modal para adicionar equipamento -->
-    <div id="equipment-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('equipment-modal')">&times;</span>
-            <h2>Adicionar Novo Equipamento</h2>
-            <div class="form-group">
-                <label for="equipment-name">Nome do Equipamento</label>
-                <input type="text" id="equipment-name" class="form-control">
+    <div class="modal fade" id="equipmentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-success"><i class="bi bi-backpack"></i> Adicionar Novo Equipamento</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nome do Equipamento</label>
+                        <input type="text" id="equipment-name" class="form-control bg-dark text-light border-secondary">
+                        <div id="equipment-suggestions" class="autocomplete-suggestions"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dano/Descrição</label>
+                        <input type="text" id="equipment-damage" class="form-control bg-dark text-light border-secondary">
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="addNewEquipment()">Adicionar Equipamento</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="equipment-damage">Dano/Descrição</label>
-                <input type="text" id="equipment-damage" class="form-control">
-            </div>
-            <button class="btn" onclick="addNewEquipment()">Adicionar Equipamento</button>
         </div>
     </div>
-    
+
+    <!-- Painel de Condições -->
+    <div id="condition-bar" class="d-none d-md-block">
+        <button id="toggle-conditions" class="btn btn-danger rounded-circle">
+            <i class="bi bi-clipboard-plus"></i>
+        </button>
+        <div id="conditions-list" class="hidden">
+            <div class="card bg-dark border-danger">
+                <div class="card-header bg-danger bg-opacity-25">
+                    <h5 class="mb-0"><i class="bi bi-clipboard-check"></i> Condições</h5>
+                </div>
+                <div class="card-body">
+                    <ul id="conditions-items" class="list-unstyled mb-0">
+                        <li><strong data-condition="sangrando">Sangrando:</strong> 1d2 por rodada. Teste Medicina DT 15 para estancar.</li>
+                        <li><strong data-condition="cansado">Cansado:</strong> -2 em testes. Precisa de descanso médio.</li>
+                        <li><strong data-condition="atordoado">Atordoado:</strong> Após 2 críticos, teste Instabilidade DT 15. +1 acerto contra você por 1 rodada.</li>
+                        <li><strong data-condition="enjoado">Enjoado:</strong> Apenas 1 ação (mover ou atacar). Dura 1 cena.</li>
+                        <li><strong data-condition="morrendo">Morrendo:</strong> Teste Físico DT 10 (+2/rodada). Kit médico necessário para salvar.</li>
+                        <li><strong data-condition="aterrorizado">Aterrorizado:</strong> -1 testes. Rola 1d20: até 10 paralisado, senão foge. Diplomacia ou Vontade DT 15 ajuda.</li>
+                        <li><strong data-condition="perturbado">Perturbado:</strong> Teste Vontade DT 15. Ímpar: ilusão. Par: ignora. Ex: atacar ou investigar algo que não existe.</li>
+                        <li><strong data-condition="envenenado">Envenenado:</strong> 1d2 por rodada. Requer antídoto do kit médico DT 15.</li>
+                        <li><strong data-condition="em-chamas">Em Chamas:</strong> 1d6 por rodada. Apaga com água ou Atletismo DT 10.</li>
+                        <li><strong data-condition="afogando">Afogando:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
+                        <li><strong data-condition="congelado">Congelado:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
+                        <li><strong data-condition="congelado-combate">Congelado (Combate):</strong> Ao ser atingido por gelo, teste Instabilidade. Falha: congelado (+1 ataque contra você).</li>
+                        <li><strong data-condition="hipotermia">Hipotermia:</strong> Tempo no frio = Físico em turnos. Falha: 8d6/turno. Requer fonte de calor e teste Instabilidade DT 15 para evitar sequelas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Áudio de fundo -->
+    <audio id="bgMusic" autoplay loop hidden>
+        <source src="lastPaigeTema.wav" type="audio/wav">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    
-    <div id="condition-bar">
-  <button id="toggle-conditions">⚕</button>
-  <div id="conditions-list" class="hidden">
-    <h3>Condições</h3>
-    <ul id="conditions-items"> 
-        <li><strong data-condition="sangrando">Sangrando:</strong> 1d2 por rodada. Teste Medicina DT 15 para estancar.</li>
-        <li><strong data-condition="cansado">Cansado:</strong> -2 em testes. Precisa de descanso médio.</li>
-        <li><strong data-condition="atordoado">Atordoado:</strong> Após 2 críticos, teste Instabilidade DT 15. +1 acerto contra você por 1 rodada.</li>
-        <li><strong data-condition="enjoado">Enjoado:</strong> Apenas 1 ação (mover ou atacar). Dura 1 cena.</li>
-        <li><strong data-condition="morrendo">Morrendo:</strong> Teste Físico DT 10 (+2/rodada). Kit médico necessário para salvar.</li>
-        <li><strong data-condition="aterrorizado">Aterrorizado:</strong> -1 testes. Rola 1d20: até 10 paralisado, senão foge. Diplomacia ou Vontade DT 15 ajuda.</li>
-        <li><strong data-condition="perturbado">Perturbado:</strong> Teste Vontade DT 15. Ímpar: ilusão. Par: ignora. Ex: atacar ou investigar algo que não existe.</li>
-        <li><strong data-condition="envenenado">Envenenado:</strong> 1d2 por rodada. Requer antídoto do kit médico DT 15.</li>
-        <li><strong data-condition="em-chamas">Em Chamas:</strong> 1d6 por rodada. Apaga com água ou Atletismo DT 10.</li>
-        <li><strong data-condition="afogando">Afogando:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
-        <li><strong data-condition="congelado">Congelado:</strong> Dano 1d6 por rodada após turnos = Físico. Precisa sair da água.</li>
-        <li><strong data-condition="congelado-combate">Congelado (Combate):</strong> Ao ser atingido por gelo, teste Instabilidade. Falha: congelado (+1 ataque contra você).</li>
-        <li><strong data-condition="hipotermia">Hipotermia:</strong> Tempo no frio = Físico em turnos. Falha: 8d6/turno. Requer fonte de calor e teste Instabilidade DT 15 para evitar sequelas.</li>
-    </ul>
-  </div>
-</div>
-
-<audio id="bgMusic" autoplay loop hidden>
-    <source src="lastPaigeTema.wav" type="audio/wav">
-    Seu navegador não suporta o elemento de áudio.
-</audio>
-
 </body>
 </html>

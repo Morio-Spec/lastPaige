@@ -1,800 +1,807 @@
+/* style.css completo e corrigido */
 
-        :root {
-            --primary-color: #006400; /* Verde escuro */
-            --secondary-color: #333;
-            --background-color: #000; /* Preto */
-            --card-color: #111; /* Preto mais claro */
-            --text-color: #ddd; /* Cinza claro */
-            --highlight-color: #32CD32; /* Verde lima */
-        }
-        
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 20px;
-        }
-        
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        .character-card {
-            background-color: var(--card-color);
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            padding: 20px;
-            margin-bottom: 30px;
-            border: 1px solid #333;
-        }
-        
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 5px;
-            margin-top: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .stat-box {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .stat-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--text-color);
-        }
-        
-        .stat-value {
-            font-size: 1.2rem;
-            color: var(--highlight-color);
-        }
-        
-        .editable {
-            background-color: #333;
-            border: 1px dashed #555;
-            padding: 2px 5px;
-            font-family: inherit;
-            color: var(--text-color);
-            width: calc(100% - 12px);
-        }
-        
-        .editable:focus {
-            outline: none;
-            border-color: var(--highlight-color);
-            background-color: rgba(0, 100, 0, 0.3);
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dotted #444;
-        }
-        
-        .inventory-item {
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #222;
-            border-radius: 5px;
-            position: relative;
-            padding-left: 20px;
-            display: flex;
-            justify-content: space-between;
-            border: 1px solid #333;
-        }
-        
-        .inventory-item::before {
-            content: "•";
-            color: var(--highlight-color);
-            position: absolute;
-            left: 5px;
-            font-weight: bold;
-        }
-        
-        .delete-btn {
-            background-color: #8B0000;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 2px 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        
-        .delete-btn:hover {
-            background-color: #A52A2A;
-        }
-        
-        .curse-card {
-            background-color: #222;
-            border: 1px solid #333;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        
-        .curse-name {
-            color: var(--highlight-color);
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .curse-cost {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.8rem;
-        }
-        
-        .health-bar {
-            height: 20px;
-            background-color: #333;
-            border-radius: 10px;
-            margin: 10px 0;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .health-fill {
-            height: 100%;
-            background-color: var(--primary-color);
-            width: 100%;
-            transition: width 0.3s;
-        }
-        
-        .health-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-        }
-        
-        .health-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 3px 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        
-        .health-btn:hover {
-            background-color: #008000;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            font-family: inherit;
-            background-color: #333;
-            color: var(--text-color);
-        }
-        
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn:hover {
-            background-color: #008000;
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #444;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-        }
-        
-        .modal-content {
-            background-color: var(--card-color);
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-            border: 1px solid #333;
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: var(--text-color);
-        }
-        
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                width: 95%;
-                margin: 20% auto;
-            }
-        }
-        
-        .modal-content {
-            background-color: var(--card-color);
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: black;
-        }
-        
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                width: 95%;
-                margin: 20% auto;
-            }
-        }
-
-.edit-controls {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .edit-btn {
-            background-color: var(--highlight-color);
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 10px;
-        }
-        
-        .edit-btn:hover {
-            background-color: #228B22;
-            color: white;
-        }
-        
-        .lock-btn {
-            background-color: #8B0000;
-            color: white;
-        }
-        
-        .lock-btn:hover {
-            background-color: #A52A2A;
-        }
-        
-        .non-editable {
-            background-color: transparent;
-            border: 1px solid transparent;
-            padding: 2px 5px;
-            pointer-events: none;
-        }
-
-        /* Estilo para o autocompletar */
-/* Estilo para o autocompletar - Tema Escuro */
-.autocomplete-suggestions {
-    display: none;
-    position: absolute;
-    background: var(--card-color);
-    border: 1px solid var(--primary-color);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
-    width: calc(100% - 2px);
-    box-shadow: 0 2px 8px rgba(0, 100, 0, 0.3);
-    word-wrap: break-word;
+:root {
+    --primary-color: #006400;
+    --secondary-color: #333;
+    --background-color: #000;
+    --card-color: #111;
+    --text-color: #ddd;
+    --highlight-color: #32CD32;
+    --bloodmoon-primary: #8B0000;
+    --bloodmoon-highlight: #FF0000;
 }
 
-.autocomplete-suggestion {
-    padding: 8px 12px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    color: var(--text-color);
-    border-bottom: 1px solid #333;
-    white-space: normal;
-word-break: break-word;
-flex-direction: column; /* Para empilhar nome e descrição */
-align-items: flex-start; /* Alinha à esquerda */
-}
-
-.autocomplete-suggestion:hover {
-    background-color: rgba(50, 205, 50, 0.1);
-}
-
-.suggestion-name {
-    font-weight: bold;
-    color: var(--highlight-color);
-}
-
-.suggestion-damage {
-    color: #aaa;
-    font-size: 0.9em;
-    margin-left: 10px;
-}
-
-/* Ajuste para o formulário de equipamento */
-.form-group {
+/* Ajustes para Bootstrap + tema escuro */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
-/* Estilo para as runas flutuantes */
+/* Runas de fundo - POSICIONAMENTO CORRETO */
 .rune-floating {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background-image: url('teste.png');
+    position: fixed !important;
+    width: 40px;
+    height: 40px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L70,30 L90,50 L70,70 L50,90 L30,70 L10,50 L30,30 Z" fill="none" stroke="%23006400" stroke-width="2"/></svg>');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.3;
-    z-index: -1;
-    animation: float 15s infinite ease-in-out, glow 2s infinite alternate;
-    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+    opacity: 0.15;
+    z-index: -1000 !important; /* FUNDO PROFUNDO */
+    animation: floatRune 20s infinite ease-in-out;
+    pointer-events: none;
 }
-
-@keyframes float {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(10px, 10px) rotate(5deg);
-    }
-    50% {
-        transform: translate(-10px, 5px) rotate(-5deg);
-    }
-    75% {
-        transform: translate(5px, -10px) rotate(3deg);
-    }
-}
-
-@keyframes glow {
-    from {
-        opacity: 0.3;
-        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
-    }
-    to {
-        opacity: 0.7;
-        filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.9));
-    }
-}
-
-/* Runas "•X•" brilhantes no fundo */
 
 .rune-x-floating {
-    position: fixed;
+    position: fixed !important;
     color: var(--highlight-color);
-    font-size: 24px;
-    opacity: 0.1;
-    z-index: -1;
-    animation: float-x 20s infinite linear, glow-x 3s infinite alternate;
-    text-shadow: 0 0 10px var(--highlight-color);
+    font-size: 28px;
+    opacity: 0.08;
+    z-index: -1000 !important; /* FUNDO PROFUNDO */
+    animation: floatX 25s infinite linear;
+    text-shadow: 0 0 8px currentColor;
     pointer-events: none;
     user-select: none;
 }
 
-@keyframes float-x {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(20vw, 10vh) rotate(90deg);
-    }
-    50% {
-        transform: translate(10vw, 20vh) rotate(180deg);
-    }
-    75% {
-        transform: translate(-10vw, 15vh) rotate(270deg);
-    }
-    100% {
-        transform: translate(0, 0) rotate(360deg);
-    }
-}
-
-@keyframes glow-x {
-    0% {
-        opacity: 0.05;
-        text-shadow: 0 0 5px var(--highlight-color);
-    }
-    50% {
-        opacity: 0.2;
-        text-shadow: 0 0 20px var(--highlight-color);
-    }
-    100% {
+@keyframes floatRune {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
         opacity: 0.1;
-        text-shadow: 0 0 10px var(--highlight-color);
+    }
+    25% { 
+        transform: translate(30px, 20px) rotate(90deg) scale(1.1);
+        opacity: 0.2;
+    }
+    50% { 
+        transform: translate(-20px, 30px) rotate(180deg) scale(0.9);
+        opacity: 0.15;
+    }
+    75% { 
+        transform: translate(20px, -30px) rotate(270deg) scale(1.05);
+        opacity: 0.2;
     }
 }
 
-/* Adicione no final do arquivo */
-.bloodmoon-btn {
-    background-color: #8B0000 !important; /* Vermelho sangue */
-    color: white !important;
-    margin: 0 10px !important;
+@keyframes floatX {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.05; }
+    25% { transform: translate(15vw, 10vh) rotate(90deg); opacity: 0.1; }
+    50% { transform: translate(5vw, 20vh) rotate(180deg); opacity: 0.08; }
+    75% { transform: translate(-10vw, 15vh) rotate(270deg); opacity: 0.12; }
+    100% { transform: translate(0, 0) rotate(360deg); opacity: 0.05; }
 }
 
-.bloodmoon-btn:hover {
-    background-color: #A52A2A !important;
+/* Efeito de brilho para runas */
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(50, 205, 50, 0.3)); }
+    50% { filter: drop-shadow(0 0 10px rgba(50, 205, 50, 0.6)); }
 }
 
-.dip-btn {
-    background-color: #006400 !important; /* Verde escuro */
-    color: white !important;
-    margin: 0 10px !important;
+.rune-floating {
+    animation: floatRune 20s infinite ease-in-out, glowPulse 3s infinite alternate;
 }
 
-.dip-btn:hover {
-    background-color: #008000 !important;
-}
-
-
-/* Estilos para o tema Blood Moon */
-body.bloodmoon {
-    --primary-color: #8B0000; /* Vermelho sangue */
-    --highlight-color: #FF0000; /* Vermelho brilhante */
-}
-
+/* Tema Blood Moon - CORREÇÃO DE RUNAS */
 body.bloodmoon .rune-floating {
-    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L70,30 L90,50 L70,70 L50,90 L30,70 L10,50 L30,30 Z" fill="none" stroke="%238B0000" stroke-width="2"/></svg>');
+    animation: floatRune 20s infinite ease-in-out, glowPulseBlood 3s infinite alternate;
 }
 
 body.bloodmoon .rune-x-floating {
-    color: #FF0000;
-    text-shadow: 0 0 10px #FF0000;
+    color: var(--bloodmoon-highlight);
+    text-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
 }
 
-@keyframes glow {
-    from {
-        opacity: 0.3;
-        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
-    }
-    to {
-        opacity: 0.7;
-        filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.9));
-    }
+@keyframes glowPulseBlood {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(139, 0, 0, 0.4)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.7)); }
 }
 
-@keyframes glow-x {
-    0% {
-        opacity: 0.05;
-        text-shadow: 0 0 5px #FF0000;
-    }
-    50% {
-        opacity: 0.2;
-        text-shadow: 0 0 20px #FF0000;
-    }
-    100% {
-        opacity: 0.1;
-        text-shadow: 0 0 10px #FF0000;
-    }
+/* Campos editáveis com Bootstrap */
+.form-control.editable-field {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px dashed #555 !important;
+    color: var(--text-color) !important;
+    transition: all 0.3s;
+    min-height: 38px;
+    cursor: text;
 }
 
-@viewport {
-  width: device-width;
-  zoom: 1.0;
+.form-control.editable-field:focus {
+    background-color: rgba(50, 205, 50, 0.1) !important;
+    border-color: var(--highlight-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(50, 205, 50, 0.25) !important;
 }
 
-/* Estilo para a barra de Desespero */
+.form-control.editable-field.non-editable {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Botões de edição */
+#edit-btn { display: inline-block; }
+#lock-btn { display: none; }
+
+/* Sistema de Desespero */
 .desperation-container {
-    margin-top: 20px;
-    background-color: var(--card-color);
-    padding: 15px;
-    border-radius: 5px;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    padding: 20px;
+    border-radius: 10px;
     border-left: 4px solid #8B0000;
+    margin-top: 20px;
+}
+
+.desperation-title {
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .desperation-boxes {
     display: flex;
-    gap: 5px;
-    margin-top: 10px;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
 .desperation-box {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border: 2px solid #8B0000;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    position: relative;
-    background-color: #222;
-    color: white;
     font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ccc;
+    border-radius: 6px;
+    transition: all 0.3s;
+    position: relative;
+    user-select: none;
+}
+
+.desperation-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.3);
+    background: rgba(139, 0, 0, 0.2);
 }
 
 .desperation-box.filled {
-    background-color: #8B0000;
+    background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+    color: white;
+    box-shadow: 0 2px 6px rgba(139, 0, 0, 0.4);
 }
 
-.desperation-box:hover::after {
+.desperation-box.filled:hover {
+    background: linear-gradient(135deg, #A52A2A 0%, #8B0000 100%);
+}
+
+/* Tooltip para efeitos de desespero */
+.desperation-box[data-effect]:hover::after {
     content: attr(data-effect);
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #111;
+    background: rgba(17, 17, 17, 0.95);
     color: white;
-    padding: 5px;
-    border-radius: 3px;
+    padding: 10px 12px;
+    border-radius: 6px;
     white-space: nowrap;
-    z-index: 10;
+    z-index: 1000;
     border: 1px solid #8B0000;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: normal;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.desperation-title {
-    color: #8B0000;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Remove o sublinhado apenas do título Desespero */
-.section-title.no-underline {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-}
-
+/* Painel de Condições */
 #condition-bar {
     position: fixed;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-color: var(--card-color);
-    border-right: 2px solid var(--primary-color);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 10px;
-    z-index: 100;
+    z-index: 1000;
+    transition: all 0.3s;
 }
 
 #toggle-conditions {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
 }
 
 #conditions-list {
-    margin-top: 10px;
-    max-height: 500px;
-    overflow-y: auto;
+    position: absolute;
+    left: 60px;
+    top: 0;
+    width: 320px;
     display: none;
-    font-size: 0.85rem;
-}
-
-#conditions-list ul {
-    padding-left: 20px;
-    list-style: disc;
-}
-
-#conditions-list h3 {
-    margin-top: 0;
-    color: var(--highlight-color);
-    font-size: 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s;
 }
 
 #conditions-list.show {
     display: block;
+    opacity: 1;
+    transform: translateX(0);
 }
 
-/* Estilos para as condições */
-#conditions-list strong[data-condition="sangrando"] {
-    color: #ff3333;
-    border-left: 3px solid #ff3333;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(255,0,0,0.1) 0%, transparent 100%);
-}
-
-#conditions-list strong[data-condition="cansado"] {
-    color: #a0a0a0;
-    border-left: 3px solid #a0a0a0;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(160,160,160,0.1) 0%, transparent 100%);
-}
-
-#conditions-list strong[data-condition="atordoado"] {
-    color: #ff9900;
-    border-left: 3px solid #ffcc00;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(255,153,0,0.1) 0%, transparent 100%);
-}
-
-#conditions-list strong[data-condition="enjoado"] {
-    color: #8a2be2;
-    border-left: 3px solid #8a2be2;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(138,43,226,0.1) 0%, transparent 100%);
-}
-
-#conditions-list strong[data-condition="morrendo"] {
-    color: #000;
-    border-left: 3px solid #000;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 100%);
-    text-shadow: 0 0 2px white;
+/* Efeitos de cor para condições - CORRIGIDO */
+#conditions-items li strong {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
     font-weight: bold;
 }
 
-#conditions-list strong[data-condition="aterrorizado"] {
-    color: #800080;
-    border-left: 3px solid #800080;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(128,0,128,0.1) 0%, transparent 100%);
+/* Sangrando */
+#conditions-items li strong[data-condition="sangrando"] {
+    color: #ff3333 !important;
+    background: linear-gradient(90deg, rgba(255, 51, 51, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #ff3333 !important;
 }
 
-#conditions-list strong[data-condition="perturbado"] {
-    color: #9370db;
-    border-left: 3px solid #9370db;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(147,112,219,0.1) 0%, transparent 100%);
+/* Cansado */
+#conditions-items li strong[data-condition="cansado"] {
+    color: #a0a0a0 !important;
+    background: linear-gradient(90deg, rgba(160, 160, 160, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #a0a0a0 !important;
 }
 
-#conditions-list strong[data-condition="envenenado"] {
-    color: #32cd32;
-    border-left: 3px solid #32cd32;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(50,205,50,0.1) 0%, transparent 100%);
+/* Atordoado */
+#conditions-items li strong[data-condition="atordoado"] {
+    color: #ff9900 !important;
+    background: linear-gradient(90deg, rgba(255, 153, 0, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #ff9900 !important;
 }
 
-#conditions-list strong[data-condition="em-chamas"] {
-    color: #ff8c00;
-    border-left: 3px solid #ff8c00;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(255,140,0,0.1) 0%, transparent 100%);
-    animation: flicker 2s infinite alternate;
+/* Enjoado */
+#conditions-items li strong[data-condition="enjoado"] {
+    color: #8a2be2 !important;
+    background: linear-gradient(90deg, rgba(138, 43, 226, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #8a2be2 !important;
 }
 
-#conditions-list strong[data-condition="afogando"] {
-    color: #1e90ff;
-    border-left: 3px solid #1e90ff;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(30,144,255,0.1) 0%, transparent 100%);
+/* Morrendo */
+#conditions-items li strong[data-condition="morrendo"] {
+    color: #000000 !important;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+    border-left: 3px solid #000000 !important;
+    text-shadow: 0 0 2px white;
 }
 
-#conditions-list strong[data-condition="congelado"] {
-    color: #00bfff;
-    border-left: 3px solid #00bfff;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(0,191,255,0.1) 0%, transparent 100%);
+/* Aterrorizado */
+#conditions-items li strong[data-condition="aterrorizado"] {
+    color: #800080 !important;
+    background: linear-gradient(90deg, rgba(128, 0, 128, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #800080 !important;
 }
 
-#conditions-list strong[data-condition="congelado-combate"] {
-    color: #00ffff;
-    border-left: 3px solid #00ffff;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(0,255,255,0.1) 0%, transparent 100%);
-    text-shadow: 0 0 5px rgba(0,255,255,0.3);
+/* Perturbado */
+#conditions-items li strong[data-condition="perturbado"] {
+    color: #9370db !important;
+    background: linear-gradient(90deg, rgba(147, 112, 219, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #9370db !important;
 }
 
-#conditions-list strong[data-condition="hipotermia"] {
-    color: #add8e6;
-    border-left: 3px solid #add8e6;
-    padding-left: 10px;
-    background: linear-gradient(90deg, rgba(173,216,230,0.1) 0%, transparent 100%);
+/* Envenenado */
+#conditions-items li strong[data-condition="envenenado"] {
+    color: #32cd32 !important;
+    background: linear-gradient(90deg, rgba(50, 205, 50, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #32cd32 !important;
 }
 
-/* Efeito especial para "Em Chamas" */
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
+/* Em Chamas */
+#conditions-items li strong[data-condition="em-chamas"] {
+    color: #ff8c00 !important;
+    background: linear-gradient(90deg, rgba(255, 140, 0, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #ff8c00 !important;
+    animation: flameFlicker 1.5s infinite alternate;
+}
+
+@keyframes flameFlicker {
+    0% { opacity: 0.8; }
     100% { opacity: 1; }
 }
 
-#conditions-items li {
-    color: var(--primary-color); 
-    border-left: none; 
-    padding-left: 0;
-    background: none; 
+/* Afogando */
+#conditions-items li strong[data-condition="afogando"] {
+    color: #1e90ff !important;
+    background: linear-gradient(90deg, rgba(30, 144, 255, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #1e90ff !important;
+}
+
+/* Congelado */
+#conditions-items li strong[data-condition="congelado"],
+#conditions-items li strong[data-condition="congelado-combate"] {
+    color: #00bfff !important;
+    background: linear-gradient(90deg, rgba(0, 191, 255, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #00bfff !important;
+}
+
+/* Hipotermia */
+#conditions-items li strong[data-condition="hipotermia"] {
+    color: #add8e6 !important;
+    background: linear-gradient(90deg, rgba(173, 216, 230, 0.15) 0%, transparent 100%);
+    border-left: 3px solid #add8e6 !important;
+}
+
+/* Autocomplete - ESTILO CORRIGIDO */
+.autocomplete-suggestions {
+    position: absolute !important;
+    background: var(--card-color) !important;
+    border: 1px solid var(--highlight-color) !important;
+    border-radius: 8px !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    z-index: 1050 !important;
+    width: 100% !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+    margin-top: 5px !important;
+    display: none;
+}
+
+.autocomplete-suggestion {
+    padding: 12px 15px !important;
+    cursor: pointer !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+}
+
+.autocomplete-suggestion:hover {
+    background: rgba(50, 205, 50, 0.15) !important;
+    padding-left: 20px !important;
+}
+
+.suggestion-name {
+    font-weight: bold !important;
+    color: var(--highlight-color) !important;
+    flex: 1 !important;
+}
+
+.suggestion-damage {
+    color: #aaa !important;
+    font-size: 0.9em !important;
+    text-align: right !important;
+    margin-left: 15px !important;
+    max-width: 50% !important;
+    word-break: break-word !important;
+}
+
+/* Para sugestões de trilhas */
+.autocomplete-suggestion.path-suggestion {
+    flex-direction: column !important;
+}
+
+.path-summary {
+    color: #888 !important;
+    font-size: 0.85em !important;
+    margin-top: 5px !important;
+    font-style: italic !important;
+}
+
+/* Círculo de DT */
+#curse-dt-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #008000 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.4);
+    border: 2px solid var(--highlight-color);
+    cursor: help;
+    transition: all 0.3s;
+}
+
+#curse-dt-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 100, 0, 0.6);
+}
+
+body.bloodmoon #curse-dt-circle {
+    background: linear-gradient(135deg, var(--bloodmoon-primary) 0%, #A52A2A 100%);
+    border-color: var(--bloodmoon-highlight);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
+}
+
+/* Estatísticas calculadas - destaque */
+.calculated-stat {
+    font-weight: bold;
+    color: var(--highlight-color) !important;
+    font-size: 1.1em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .rune-floating, .rune-x-floating {
+        display: none; /* Esconde runas em mobile para performance */
+    }
+    
+    #condition-bar {
+        display: none; /* Esconde painel de condições em mobile */
+    }
+    
+    .desperation-box {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    #curse-dt-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .autocomplete-suggestions {
+        position: fixed !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-height: 200px !important;
+    }
+}
+
+/* Animações gerais */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--highlight-color);
+}
+
+/* Tema Blood Moon */
+body.bloodmoon {
+    background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%) !important;
+}
+
+body.bloodmoon .rune-floating {
+    background-color: #8b0000 !important;
+    box-shadow: 0 0 15px #ff0000, 0 0 30px #8b0000 !important;
+}
+
+body.bloodmoon .rune-x-floating {
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000 !important;
+}
+
+body.bloodmoon .card {
+    background-color: rgba(20, 0, 0, 0.9) !important;
+    border-color: #8b0000 !important;
+}
+
+body.bloodmoon .card-header {
+    background-color: rgba(139, 0, 0, 0.3) !important;
+    border-bottom-color: #8b0000 !important;
+}
+
+body.bloodmoon .border-secondary {
+    border-color: #660000 !important;
+}
+
+body.bloodmoon .text-success {
+    color: #ff4444 !important;
+}
+
+body.bloodmoon .progress-bar {
+    background-color: #8b0000 !important;
+}
+
+body.bloodmoon .btn-outline-success {
+    color: #ff4444;
+    border-color: #ff4444;
+}
+
+body.bloodmoon .btn-outline-success:hover {
+    background-color: #ff4444;
+    color: #000;
+}
+
+body.bloodmoon .btn-outline-danger {
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+body.bloodmoon .btn-outline-danger:hover {
+    background-color: #ff0000;
+    color: #000;
+}
+
+body.bloodmoon .btn-outline-info {
+    color: #ff6666;
+    border-color: #ff6666;
+}
+
+body.bloodmoon .btn-outline-info:hover {
+    background-color: #ff6666;
+    color: #000;
+}
+
+body.bloodmoon .btn-outline-warning {
+    color: #ff8888;
+    border-color: #ff8888;
+}
+
+body.bloodmoon .btn-outline-warning:hover {
+    background-color: #ff8888;
+    color: #000;
+}
+
+
+.dip-btn {
+    background-color: #8b0000 !important;
+    border-color: #ff0000 !important;
+    color: #fff !important;
+}
+
+.dip-btn:hover {
+    background-color: #660000 !important;
+    border-color: #ff4444 !important;
+}
+
+/* ESTILOS PARA EQUIPAMENTOS (INVENTÁRIO) */
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(50, 205, 50, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.inventory-item:hover {
+    background: rgba(50, 205, 50, 0.1);
+    border-color: var(--highlight-color);
+    transform: translateX(5px);
+}
+
+.inventory-item span {
+    flex: 1;
+    margin-right: 15px;
+    word-break: break-word;
+}
+
+.inventory-item span:first-child {
+    font-weight: bold;
+    color: var(--highlight-color);
+    min-width: 120px;
+}
+
+.inventory-item span:nth-child(2) {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.inventory-item .delete-btn {
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    color: #ff6666;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.inventory-item .delete-btn:hover {
+    background: rgba(255, 0, 0, 0.4);
+    color: white;
+}
+
+/* ESTILOS PARA MALDIÇÕES */
+.curse-card {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.curse-card:hover {
+    background: rgba(139, 0, 0, 0.1);
+    border-color: var(--bloodmoon-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
+}
+
+.curse-cost {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--highlight-color);
+}
+
+.curse-name {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    padding-right: 80px; /* Espaço para o custo */
+}
+
+.curse-card p {
+    margin: 5px 0;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+.curse-card strong {
+    color: #aaa;
+}
+
+/* Botão de remover para maldições */
+.curse-card .delete-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    color: #ff6666;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    transition: all 0.2s;
+}
+
+.curse-card .delete-btn:hover {
+    background: rgba(255, 0, 0, 0.4);
+    color: white;
+}
+
+/* Tema Blood Moon - ajustes para equipamentos e maldições */
+body.bloodmoon .inventory-item {
+    border-color: rgba(255, 0, 0, 0.3);
+    background: rgba(20, 0, 0, 0.3);
+}
+
+body.bloodmoon .inventory-item:hover {
+    background: rgba(139, 0, 0, 0.2);
+    border-color: var(--bloodmoon-highlight);
+}
+
+body.bloodmoon .inventory-item span:first-child {
+    color: #ff6666;
+}
+
+body.bloodmoon .curse-card {
+    border-color: rgba(255, 0, 0, 0.3);
+    background: rgba(20, 0, 0, 0.3);
+}
+
+body.bloodmoon .curse-card:hover {
+    background: rgba(139, 0, 0, 0.2);
+    border-color: var(--bloodmoon-highlight);
+}
+
+body.bloodmoon .curse-cost {
+    background: var(--bloodmoon-primary);
+    border-color: var(--bloodmoon-highlight);
+}
+
+body.bloodmoon .curse-name {
+    color: #ff9999;
+}
+
+/* Mensagens de lista vazia */
+#equipment-list > .text-center,
+#curses-list > .text-center {
+    opacity: 0.6;
+    padding: 30px 20px;
+}
+
+#equipment-list .display-6,
+#curses-list .display-6 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+    .inventory-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    
+    .inventory-item span {
+        margin-right: 0;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+    
+    .inventory-item span:nth-child(2) {
+        text-align: left;
+    }
+    
+    .inventory-item .delete-btn {
+        align-self: flex-end;
+        margin-top: 5px;
+    }
+    
+    .curse-card {
+        padding: 12px;
+    }
+    
+    .curse-cost {
+        position: relative;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    
+    .curse-name {
+        padding-right: 0;
+    }
+    
+    .curse-card .delete-btn {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: 10px;
+    }
 }
