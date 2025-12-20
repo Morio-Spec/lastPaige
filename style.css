@@ -123,6 +123,21 @@ body.bloodmoon .rune-x-floating {
     pointer-events: none;
 }
 
+#hp-fill.progress-bar {
+    background-color: #dc3545 !important; /* Vermelho para HP */
+    background: linear-gradient(90deg, #dc3545 0%, #c82333 100%) !important;
+}
+
+#pa-fill.progress-bar {
+    background-color: #28a745 !important; /* Verde para PA */
+    background: linear-gradient(90deg, #28a745 0%, #218838 100%) !important;
+}
+
+#psy-fill.progress-bar {
+    background-color: #6f42c1 !important; /* Roxo para Psiquê */
+    background: linear-gradient(90deg, #6f42c1 0%, #5a32a3 100%) !important;
+}
+
 /* Botões de edição */
 #edit-btn { display: inline-block; }
 #lock-btn { display: none; }
@@ -168,6 +183,7 @@ body.bloodmoon .rune-x-floating {
     transition: all 0.3s;
     position: relative;
     user-select: none;
+    z-index: 9999 !important;
 }
 
 .desperation-box:hover {
@@ -209,14 +225,6 @@ body.bloodmoon .rune-x-floating {
 }
 
 /* Painel de Condições */
-#condition-bar {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    z-index: 1000;
-    transition: all 0.3s;
-}
 
 #toggle-conditions {
     width: 50px;
@@ -228,11 +236,13 @@ body.bloodmoon .rune-x-floating {
 }
 
 #conditions-list {
-    position: absolute;
-    left: 60px;
+    position: relative;
+    display: block;
+    pointer-events: none;
+    left: 0;
     top: 0;
-    width: 320px;
-    display: none;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     transform: translateX(-20px);
     transition: all 0.3s;
@@ -240,11 +250,13 @@ body.bloodmoon .rune-x-floating {
 
 #conditions-list.show {
     display: block;
+    pointer-events: auto;
     opacity: 1;
     transform: translateX(0);
+    overflow-y: auto;
 }
 
-/* Efeitos de cor para condições - CORRIGIDO */
+/* Efeitos de cor para condições */
 #conditions-items li strong {
     display: inline-block;
     padding: 2px 8px;
@@ -438,14 +450,47 @@ body.bloodmoon #curse-dt-circle {
     font-size: 1.1em;
 }
 
+#condition-bar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     .rune-floating, .rune-x-floating {
         display: none; /* Esconde runas em mobile para performance */
     }
-    
+
     #condition-bar {
-        display: none; /* Esconde painel de condições em mobile */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+
+    #toggle-conditions {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    #conditions-list {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: 80px;
+        top: auto;
+        width: auto;
+        max-height: 300px;
+        overflow-y: auto;
     }
     
     .desperation-box {
@@ -576,14 +621,29 @@ body.bloodmoon .btn-outline-warning:hover {
 
 
 .dip-btn {
-    background-color: #8b0000 !important;
-    border-color: #ff0000 !important;
-    color: #fff !important;
+    background: linear-gradient(135deg, #006400 0%, #008000 100%) !important;
+    border-color: #32CD32 !important;
+    color: white !important;
+    border-width: 2px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    position: relative;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.4);
 }
 
 .dip-btn:hover {
-    background-color: #660000 !important;
-    border-color: #ff4444 !important;
+    background: linear-gradient(135deg, #008000 0%, #00AA00 100%) !important;
+    border-color: #32CD32 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 100, 0, 0.6);
+}
+
+/* Adicionar efeito brilhante para o texto D.I.P */
+.dip-btn {
+    letter-spacing: 1px;
 }
 
 /* ESTILOS PARA EQUIPAMENTOS (INVENTÁRIO) */

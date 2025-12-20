@@ -3,12 +3,21 @@ let curseCounter = 5;
 let equipmentCounter = 0;
 let currentPath = null;
 const desperationEffects = {
-    6: "Falha na ação e atrapalha aliados",
-    8: "Quebra o item que está sendo segurado",
-    10: "Tremer de desespero (-2 na próxima ação)",
-    12: "Fuga em desespero (+2d6 de dano psiquê)",
-    14: "Condição 'Aterrorizado'",
-    15: "+1 de Insanidade e paralisa em desespero"
+    1: "1d6 psi",
+    2: "2d6 psi",
+    3: "3d6 psi",
+    4: "4d6 psi",
+    5: "5d6 psi",
+    6: "Desesperado- 2 em intelecto carisma e energia paranormal. +1 em físico, força, agilidade (adrenalina)",
+    7: "5d6 psiquê",
+    8: "ataque de desespero= duração cena ou até teste de diplomacia sucesso. escolha um numero no dado de 1d6 pra cada ser presente na cena. o número que cair será atacado. após isso+ condição desesperado.",
+    9: "5d6 psiquê", 
+    10: "tremer. -5 em agilidade. (sem vantagens da adrenalina)",
+    11: "6d6 psiquê",
+    12: "medroso= você está morrendo de medo. você não pode atacar nada nesta cena, você só quer fugir ou se esconder. +adrenalina.",
+    13: "7d7 psiquê",
+    14: "aterrorizado",
+    15: "1d6 INSANIDADE"
 };
 let isBloodMoonTheme = false;
 
@@ -1816,13 +1825,15 @@ function toggleTheme() {
     
     if (isBloodMoonTheme) {
         body.classList.add('bloodmoon');
-        themeBtn.textContent = 'D.I.P';
-        themeBtn.className = 'dip-btn';
+        themeBtn.innerHTML = '•X• D.I.P •X•';
+        themeBtn.classList.remove('btn-outline-danger');
+        themeBtn.classList.add('dip-btn');
         if (favicon) favicon.href = 'bloodmoon.ico';
     } else {
         body.classList.remove('bloodmoon');
-        themeBtn.textContent = 'Blood Moon';
-        themeBtn.className = 'bloodmoon-btn';
+        themeBtn.innerHTML = '<i class="bi bi-moon"></i> Blood Moon';
+        themeBtn.classList.remove('dip-btn');
+        themeBtn.classList.add('btn-outline-danger');
         if (favicon) favicon.href = 'favicon.ico';
     }
 }
